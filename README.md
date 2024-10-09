@@ -1,8 +1,10 @@
 # wordfind
-Web app: Toy scrabble word finder
+Web app: Crossword / crabble word finder
 
-Generates random tiles: then finds largest, highest score and valid words. 
-
+- Demo mode generates random tiles: then finds largest, highest score and valid words. 
+- Search for words in a dictionary of 300k words
+- Play a game to find words from random letters/tiles
+- Find anagrams of words.
 
 ## **Website** 
 
@@ -14,15 +16,11 @@ Generates random tiles: then finds largest, highest score and valid words.
 - [x] Favicon. What is the right way to do this? 
 - [x] Experiment with loops in templates
 - [x] Figure how to deploy with shuttle
-- [x] Use it to port some of my projects e.g. this one scrabble
 - [ ] Make some notes for later
-- [ ] maybe add styling in the layout rather than inline. Ugh no 
 - [ ] error handling and testing etc
-- [ ] add some post requests e.g. add in your own letters
-- [ ] gamify it with option to find as many words as you can with a given random set
 
 
-## **Project: HTMX, Tera, Axum, Missing and Shuttle**
+## **Project tools: HTMX, Tera, Axum, Missing and Shuttle**
 
 - Web server: Rust with Axum (https://github.com/tokio-rs/axum) 
 - HTML templating engine: Tera (https://docs.rs/tera/latest/tera)
@@ -30,7 +28,7 @@ Generates random tiles: then finds largest, highest score and valid words.
 - HTMX (https://htmx.org/)
 - Tera (https://keats.github.io/tera/docs/#getting-started)
 - Hotreloading: Cargo-watch (https://github.com/watchexec/cargo-watch)
-- Hotreloading: Tower-livereload (https://github.com/leotaku/tower-livereload)
+- Hotreloading: Tower-livereload (https://github.com/leotaku/tower-livereload) - disabled
 - Deployed via shuttle.rs on free tier (https://www.shuttle.rs/)
 
 
@@ -41,28 +39,27 @@ Generates random tiles: then finds largest, highest score and valid words.
 
 ## **Thanks to:**
 
-- CodeScope Youtuber for getting me started with HTMX and rust. 
+- CodeScope Youtuber for getting me started with HTMX and Rust. 
 - Source code (https://gitlab.com/codescope-reference/rustmx)
 - Based on Guardian coding challenges (https://github.com/guardian/coding-exercises)
-- Note uses text file with approx 179k words. Less than official dictionary for Scrabble
+- Note uses text file with approx 300k words. Less than official dictionary for Scrabble
+- Note an offical set of Scrabble words
 
 ## **Screenshot:**
 
-
-![Letters: D,I,K,N,O,Q,R Returns: longest word, "drink", highest, "Qi = 10"](https://github.com/user-attachments/assets/72c323ea-6902-4a4d-8091-a1b6b104c4a4)
-
-
+![Here is an example screenshot]
+(https://github.com/leshec/wordfind/issues/1#issue-2577028734)
 ## **Install:**
 
-- if you want to take this and turn it into something else...and notes to self
-- make sure you have rust installed. It comes with cargo the package manager
-- see one-liner on (https://www.rust-lang.org/) install page: `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
-- clone this project: from terminal run `git clone https://github.com/leshec/wordfind.git`
-- go to the cloned repo `cd wordfind`
-- from terminal run `cargo install cargo-shuttle` so your system has the shuttle stuff
-- from terminal run `cargo shuttle run` - may need a login api key via shuttle.rs. Just sign up to shuttle and it gives you an api key
-- your system may do a pop up asking for permissions to access the network
-- should be able to see the site running locally on your machine e.g. via `127.0.0.1:8000`
-- visit (https://www.shuttle.rs/) for more info, example and to deploy your own stuff
+- Terminal `git clone https://github.com/leshec/wordfind.git`
+- Need Rust installed, comes with Cargo package manager, from terminal `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+- Install Shuttle or see their website e.g for linux/mac `curl -sSfL https://www.shuttle.rs/install | bash`
+- A Windows version of Shuttle available
+- Terminal `cargo build && cargo shuttle project run`
+- Site runs locally on your machine e.g. via `127.0.0.1:8000`
+- See docs on Shuttle.rs 
+- Deplay is pretty simple:
+- Log in to shuttle via terminal `cargo shuttle login`, prompts for API, takes you to website to get it, and then paste into terminal and run from command line `cargo shuttle deploy`
+- Visit (https://www.shuttle.rs/) for more info, example and to deploy your own stuff
 
 
