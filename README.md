@@ -1,10 +1,14 @@
 # wordfind
-Web app: Crossword / crabble word finder
+Web app: Crossword / scrabble word finder learning webproject
 
 - Demo mode generates random tiles: then finds largest, highest score and valid words. 
 - Search for words in a dictionary of 300k words
 - Play a game to find words from random letters/tiles
 - Find anagrams of words.
+
+Shuttle is an awesome tool for quickly and easily deploying webapps based on Rust.
+Tera for templating was good but I'll explore others
+Axum is easy enough to use and I like the idea of HTMX
 
 ## **Website** 
 
@@ -39,16 +43,17 @@ Web app: Crossword / crabble word finder
 
 ## **Thanks to:**
 
-- CodeScope Youtuber for getting me started with HTMX and Rust. 
+- CodeScope Youtuber for inspiring me to have a go deploying a web app with his example of using HTMX and Rust. 
 - Source code (https://gitlab.com/codescope-reference/rustmx)
-- Based on Guardian coding challenges (https://github.com/guardian/coding-exercises)
-- Note uses text file with approx 300k words. Less than official dictionary for Scrabble
+- This site is based on Guardian coding challenges (https://github.com/guardian/coding-exercises)
+- Note uses text file with approx 300k words. 
 - Note an offical set of Scrabble words
 
 ## **Screenshot:**
 
 ![Here is an example screenshot]
-(https://github.com/leshec/wordfind/issues/1#issue-2577028734)
+(https://github.com/user-attachments/assets/458eb7b4-6a5d-4794-87a2-479f7889eeb5)
+
 ## **Install:**
 
 - Terminal `git clone https://github.com/leshec/wordfind.git`
@@ -58,8 +63,8 @@ Web app: Crossword / crabble word finder
 - Terminal `cargo build && cargo shuttle project run`
 - Site runs locally on your machine e.g. via `127.0.0.1:8000`
 - See docs on Shuttle.rs 
-- Deplay is pretty simple:
-- Log in to shuttle via terminal `cargo shuttle login`, prompts for API, takes you to website to get it, and then paste into terminal and run from command line `cargo shuttle deploy`
-- Visit (https://www.shuttle.rs/) for more info, example and to deploy your own stuff
+- Deplayment is pretty simple:
+- Log in to shuttle via terminal `cargo shuttle login` note sign up is easy with Github, dashboard is minimal, prompts for API, takes you to website to get it, and then paste into terminal and run from command line `cargo shuttle deploy`
+- Visit (https://www.shuttle.rs/) for more info, example and to deploy your own stuff loads of example
 
 
