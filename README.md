@@ -1,4 +1,5 @@
-# wordfind
+# wordfinder
+
 Web app: Crossword / scrabble word finder learning webproject
 
 - Demo mode generates random tiles: then finds largest, highest score and valid words. 
@@ -8,11 +9,13 @@ Web app: Crossword / scrabble word finder learning webproject
 
 Shuttle is an awesome tool for quickly and easily deploying webapps based on Rust.
 Tera for templating was good but I'll explore others
-Axum is easy enough to use and I like the idea of HTMX
+Axum is easy enough to use and I like the idea of HTMX in general
+
+Not 100% finished but functions enough intended. 
 
 ## **Website** 
 
-- Wordfind (https://wordfinder.shuttleapp.rs/wordfind)
+- Wordfinder (https://wordfinder.shuttleapp.rs/wordfind)
 
 
 ## **Todo:**
@@ -22,6 +25,9 @@ Axum is easy enough to use and I like the idea of HTMX
 - [x] Figure how to deploy with shuttle
 - [ ] Make some notes for later
 - [ ] error handling and testing etc
+- [ ] add an about and contact for new words
+- [ ] add a high score leaderboard for the games
+- [ ] add a pop over if you click on a word to show meaning of word, there is a nice dictionary API for that
 
 
 ## **Project tools: HTMX, Tera, Axum, Missing and Shuttle**
@@ -40,7 +46,6 @@ Axum is easy enough to use and I like the idea of HTMX
 
 - Big Sky Software  (https://github.com/bigskysoftware/contact-app) 
 
-
 ## **Thanks to:**
 
 - CodeScope Youtuber for inspiring me to have a go deploying a web app with his example of using HTMX and Rust. 
@@ -55,6 +60,8 @@ Axum is easy enough to use and I like the idea of HTMX
 
 ## **Install:**
 
+If you want to mess around with it...
+
 - Terminal `git clone https://github.com/leshec/wordfind.git`
 - Need Rust installed, comes with Cargo package manager, from terminal `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 - Install Shuttle or see their website e.g for linux/mac `curl -sSfL https://www.shuttle.rs/install | bash`
@@ -62,7 +69,7 @@ Axum is easy enough to use and I like the idea of HTMX
 - Terminal `cargo build && cargo shuttle project run`
 - Site runs locally on your machine e.g. via `127.0.0.1:8000`
 - See docs on Shuttle.rs 
-- Deplayment is pretty simple:
+- Deployment is pretty simple:
 - Log in to shuttle via terminal `cargo shuttle login` note sign up is easy with Github, dashboard is minimal, prompts for API, takes you to website to get it, and then paste into terminal and run from command line `cargo shuttle deploy`
 - Visit (https://www.shuttle.rs/) for more info, example and to deploy your own stuff loads of example
 
