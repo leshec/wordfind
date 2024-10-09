@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+
+
+<div class="player-tiles">
+  <!-- post to /foo -->
+  <h2> Find anagrams </h2>
+  <p>
+    Enter scrabble tiles e.g."abc"
+  </p>
+  <form>
+    <input type="text" name="the_tiles" placeholder="input tiles here" />
+    <button hx-post="/for_anagram_get_full_answer_from_user_tiles" hx-target="#result2">
+      submit
+    </button>
+  </form>
+</div>
+
+<div id="result2">
+</div>
+
+
+{% endblock %}

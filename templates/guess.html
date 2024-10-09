@@ -1,0 +1,48 @@
+<hr>
+<p style="color:#43C6DB;">Your guess is ...</p>
+<p id="X" class="bold">
+  {{ guess | capitalize }}
+</p>
+<div id="output" style="color:#43C6DB;"></div>
+<hr>
+
+<script>
+  var player_guess = document.getElementById("X").innerText.trim().toLowerCase();
+  var big_ones = document.getElementById("Y").innerText.trim().toLowerCase().split(" ");
+  var valid_ones = document.getElementById("Z").innerText.trim().toLowerCase().split(",");
+  var outputDiv = document.getElementById("output");
+  var report_got_highest = false;
+  var report_got_any = false;
+
+  // Remove the first two items from big_ones
+  var big_ones = big_ones.slice(2);
+  console.log(big_ones)
+
+  // Check if player's guess matches any word in big_ones
+  big_ones.forEach((item) => {
+    var item = item.replace(/\./g, "");
+    var item = item.replace(/\,/g, "");
+    if (item.trim().toLowerCase() === player_guess.trim().toLowerCase()) {
+      report_got_highest = true;
+    }
+  });
+
+  // Check if player's guess matches any valid word
+  valid_ones.forEach((item) => {
+    if (item.trim().toLowerCase() === player_guess.trim().toLowerCase()) {
+      report_got_any = true;
+    }
+  });
+
+
+  console.log(valid_ones)
+
+  // Output the corresponding message
+  if (report_got_highest) {
+    outputDiv.innerHTML += "<p>You got the highest scoring word. Whoopee!!! Not as dumb as you look</p>";
+  } else if (report_got_any) {
+    outputDiv.innerHTML += "<p>Way to go potato head. You found a word!</p>";
+  } else {
+    outputDiv.innerHTML += "<p>You had your chance, you a loser baby.</p>";
+  }
+</script>

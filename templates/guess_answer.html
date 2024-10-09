@@ -1,0 +1,79 @@
+<p class="bold">
+  These are your tiles
+</p>
+<p>
+  {% for tile in tiles %}
+  {% if loop.last %}
+  {{ tile | capitalize }}.
+  {% else %}
+  {{ tile | capitalize }},
+  {% endif %}
+  {% endfor %}
+</p>
+
+<p></p>
+
+<form>
+  <input type="text" name="the_guess" placeholder="Your guess?" />
+
+  <button hx-post="/check_guess" hx-target="#response_to_guess" onclick="revealAnswer()">
+    submit
+  </button>
+</form>
+</div>
+
+<div id="response_to_guess">
+
+</div>
+
+<script>
+  function revealAnswer() {
+    document.getElementById("guess_reveal").style.visibility = "visible";
+  }
+</script>
+
+<div id="guess_reveal" style="visibility: hidden">
+  <p id="highest" class="bold">
+    Highest scoring words
+  </p>
+  <p id="Y">
+    {% for high in highest_word %}
+    {% if loop.index == 1 %}
+    Score {{ high }}:
+    {% elif loop.last %}
+    {{ high | capitalize }}.
+    {% else %}
+    {{ high | capitalize }},
+    {% endif %}
+    {% endfor %}
+  </p>
+
+
+  <p class="bold">
+    Longest words
+  </p>
+  <p>
+    {% for long in longest_word %}
+    {% if loop.last %}
+    {{ long | capitalize }}.
+    {% else %}
+    {{ long | capitalize }},
+    {% endif %}
+    {% endfor %}
+  </p>
+
+
+  <p class="bold">
+    Valid words
+  </p>
+  <p id="Z">
+    {% for valid in valid_word %}
+    {% if loop.last %}
+    {{ valid | capitalize }}.
+    {% else %}
+    {{ valid | capitalize }},
+    {% endif %}
+    {% endfor %}
+  </p>
+
+</div>

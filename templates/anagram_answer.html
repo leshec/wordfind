@@ -1,0 +1,26 @@
+<p class="bold">
+  These are your tiles
+</p>
+<p>
+  {% for tile in tiles %}
+  {% if loop.last %}
+  {{ tile | capitalize }}.
+  {% else %}
+  {{ tile | capitalize }},
+  {% endif %}
+  {% endfor %}
+</p>
+
+
+<p class="bold" style="color:#1561d4;">
+  Anagrams
+</p>
+<p>
+  {% for valid in valid_word %}
+  {% if loop.last %}
+  {{ valid | capitalize }}.
+  {% else %}
+  {{ valid | capitalize }},
+  {% endif %}
+  {% endfor %}
+</p>

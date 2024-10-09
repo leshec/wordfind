@@ -1,0 +1,55 @@
+<p class="bold">
+  These are your tiles
+</p>
+<p>
+  {% for tile in tiles %}
+  {% if loop.last %}
+  {{ tile | capitalize }}.
+  {% else %}
+  {{ tile | capitalize }},
+  {% endif %}
+  {% endfor %}
+</p>
+<p class="bold">
+  Longest words
+</p>
+<p>
+  {% for long in longest_word %}
+  {% if loop.last %}
+  {{ long | capitalize }}.
+  {% else %}
+  {{ long | capitalize }},
+  {% endif %}
+  {% endfor %}
+</p>
+
+<p class="bold" style="color:#1561d4;">
+  Highest scoring words
+</p>
+<p>
+
+  {% for high in highest_word %}
+  {% if loop.index == 1 %}
+  Score {{ high }}:
+  {% elif loop.last %}
+  {{ high | capitalize }}.
+  {% else %}
+  {{ high | capitalize }},
+  {% endif %}
+  {% endfor %}
+</p>
+
+
+
+<p class="bold">
+  Valid words
+</p>
+<p>
+  {% for valid in valid_word %}
+  {% if loop.last %}
+  {{ valid | capitalize }}.
+  {% else %}
+  {{ valid | capitalize }},
+  {% endif %}
+  {% endfor %}
+</p>

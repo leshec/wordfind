@@ -1,0 +1,15 @@
+{% extends 'layout.html' %} 
+
+
+{% block content %}
+
+  <button hx-get="/get_full_answer" hx-target="#target_for_full_answer">Demo</button>
+
+  <div id="target_for_full_answer" hx-get="/get_full_answer" hx-trigger="load">
+    </div>
+
+{% endblock %}
+  
+
+
+

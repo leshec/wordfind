@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+
+
+<div class="player-tiles">
+  <!-- post to /foo -->
+  <h2> Guess the highest word</h2>
+
+  
+  <p></p>
+
+    <button hx-get="/get_guess_answer" hx-target="#show_tiles">
+      play
+    </button>
+
+    <div id="show_tiles">
+</div>
+
+{% endblock %}

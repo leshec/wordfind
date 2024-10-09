@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+
+
+<div class="player-tiles">
+  <!-- post to /foo -->
+  <h2> Cheat at scrabble </h2>
+  <p>
+    Enter scrabble tiles e.g."abc"
+    </p>
+  <form>
+    <input type="text" name="the_tiles" placeholder="input tiles here"  />
+
+    <button hx-post="/get_full_answer_from_user_tiles" hx-target="#result">
+      submit
+    </button>
+  </form>
+</div>
+
+<div id="result">
+</div>
+
+
+{% endblock %}
+
+
+
+<!-- <button hx-get="/user_solution" hx-target="#stuff">Click me</button> -->
