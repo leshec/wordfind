@@ -11,7 +11,7 @@ Shuttle is an awesome tool for quickly and easily deploying webapps based on Rus
 Tera for templating was good but I'll explore others
 Axum is easy enough to use and I like the idea of HTMX in general
 
-Not 100% finished but functions enough intended. 
+Not 100% finished but functions enough as intended. 
 
 ## **Website** 
 
