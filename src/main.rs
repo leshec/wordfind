@@ -23,6 +23,7 @@ async fn main() -> shuttle_axum::ShuttleAxum {
 
     let router = Router::new()
         .route("/", get(index))
+        .route("/about", get(about))
         .route("/demo_page", get(demo_page))
         .route("/cheat_page", get(cheat_page))
         .route("/guess_page", get(guess_page))
@@ -48,6 +49,13 @@ async fn main() -> shuttle_axum::ShuttleAxum {
     Ok(router.into())
 }
 
+//ABOUT_PAGE
+async fn about() -> Html<String> {
+    let context = tera::Context::new();
+    let page_content = TEMPLATES.render("about.html", &context).unwrap();
+    Html(page_content)
+}
+
 //ANAGRAM_PAGE
 async fn anagram_page() -> Html<String> {
     let context = tera::Context::new();
@@ -64,8 +72,8 @@ async fn for_anagram_get_full_answer_from_user_tiles(Form(data): Form<FormData>)
     let page_content = TEMPLATES.render("anagram_answer.html", &context).unwrap();
     Html(page_content)
 }
-//CHEAT_PAGE
 
+//CHEAT_PAGE
 #[derive(Deserialize)]
 struct FormData {
     the_tiles: String,
@@ -120,6 +128,7 @@ async fn check_guess(Form(data): Form<FormGuessData>) -> Html<String> {
     let page_content = TEMPLATES.render("guess.html", &context).unwrap();
     Html(page_content)
 }
+
 //DEMO_PAGE
 async fn demo_page() -> Html<String> {
     let context = tera::Context::new();
@@ -140,8 +149,7 @@ async fn get_full_answer() -> Html<String> {
 
 //INDEX_PAGE
 async fn index() -> Html<String> {
-    let mut context = tera::Context::new();
-    context.insert("message_from_rust", "hello from rust");
+    let context = tera::Context::new();
     let page_content = TEMPLATES.render("index.html", &context).unwrap();
     Html(page_content)
 }
