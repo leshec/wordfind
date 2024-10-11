@@ -25,7 +25,7 @@ Not 100% finished but functions enough intended.
 - [x] Figure how to deploy with shuttle
 - [ ] Make some notes for later
 - [ ] error handling and testing etc
-- [ ] add an about and contact for new words
+- [x] add an about and contact for new words
 - [ ] add a high score leaderboard for the games
 - [ ] add a pop over if you click on a word to show meaning of word, there is a nice dictionary API for that
 
@@ -73,4 +73,5 @@ If you want to mess around with it...
 - Log in to shuttle via terminal `cargo shuttle login` note sign up is easy with Github, dashboard is minimal, prompts for API, takes you to website to get it, and then paste into terminal and run from command line `cargo shuttle deploy`
 - Visit (https://www.shuttle.rs/) for more info, example and to deploy your own stuff loads of example
 
+Note: Shuttle is migrating from shuttle.rs to shuttle.dev, this site will be moved soon. The web url will change on update. 
 
