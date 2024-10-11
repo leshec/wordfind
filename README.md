@@ -2,16 +2,16 @@
 
 Web app: Crossword / scrabble word finder learning webproject
 
-- Demo mode generates random tiles: then finds largest, highest score and valid words. 
+- Demo mode generates random tiles: then finds largest, highest score and valid words
 - Search for words in a dictionary of 300k words
 - Play a game to find words from random letters/tiles
-- Find anagrams of words.
+- Find anagrams of words
 
-Shuttle is an awesome tool for quickly and easily deploying webapps based on Rust.
+Shuttle is an awesome tool for quickly and easily deploying webapps based on Rust
 Tera for templating was good but I'll explore others
 Axum is easy enough to use and I like the idea of HTMX in general
 
-Not 100% finished but functions enough as intended. 
+Not 100% finished but functions enough as intended
 
 ## **Website** 
 
@@ -26,6 +26,8 @@ Not 100% finished but functions enough as intended.
 - [ ] Make some notes for later
 - [ ] error handling and testing etc
 - [x] add an about and contact for new words
+
+## **For another day...**
 - [ ] add a high score leaderboard for the games
 - [ ] add a pop over if you click on a word to show meaning of word, there is a nice dictionary API for that
 
@@ -51,8 +53,8 @@ Not 100% finished but functions enough as intended.
 - CodeScope Youtuber for inspiring me to have a go deploying a web app with his example of using HTMX and Rust. 
 - Source code (https://gitlab.com/codescope-reference/rustmx)
 - This site is based on Guardian coding challenges (https://github.com/guardian/coding-exercises)
-- Note uses text file with approx 300k words. 
-- Note an offical set of Scrabble words
+- Note uses text file with approx 300k words
+- Not an offical set of Scrabble words or authority on valids words
 
 ## **Screenshot:**
 
@@ -73,5 +75,5 @@ If you want to mess around with it...
 - Log in to shuttle via terminal `cargo shuttle login` note sign up is easy with Github, dashboard is minimal, prompts for API, takes you to website to get it, and then paste into terminal and run from command line `cargo shuttle deploy`
 - Visit (https://www.shuttle.rs/) for more info, example and to deploy your own stuff loads of example
 
-Note: Shuttle is migrating from shuttle.rs to shuttle.dev, this site will be moved soon. The web url will change on update. 
+Note: Shuttle is migrating from shuttle.rs to shuttle.dev, this site will be moved soon. The web url will change on update
 
