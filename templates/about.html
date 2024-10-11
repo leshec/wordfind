@@ -1,9 +1,8 @@
 {% extends 'layout.html' %}
 
-
 {% block content %}
 
-<h4 style="color: skyblue">
+<h4 style="color:var(--accent);">
   Get in touch 
   </h4>
 <p></p>
@@ -12,12 +11,11 @@
   <li>Feedback on the site</li>
   <li>Talk to the developer</li>
 </ul>
-<p></p>
 <p style="color: skyblue; font-size: 0.9em;">word<!-- -->findcontact<!-- --->@gmail<!--  -->.com
 </p>
 
 <p></p>
-<h4 style="color: skyblue"> Letter scoring </h4>
+<h4 style="color:var(--accent);"> Letter scoring </h4>
 <ul style="list-style-type:none;">
 <li>1:  e, a, i, o, n, r, t, l, s, u</li>
 <li>2:  d, g</li>
@@ -28,11 +26,10 @@
 <li>10: q, z</li>
 </ul>
 <p></p>
-<p></p>
 <p> This site is not associated with Scrabble nor an authority on valid Scrabble words</p>
 
 <p></p>
-<h4 style="color: skyblue"> Web app made with </h4> 
+<h4 style="color:var(--accent);"> Web app made with </h4> 
 <ul>
 <li> Web server and routing <a href="https://github.com/tokio-rs/axum"> Rust with Axum </a> </li>
 <li> HTML templating engine: <a href="https://keats.github.io/tera/docs/"> Tera </a></li>
@@ -40,7 +37,6 @@
 <li> Interactivity: <a href="https://htmx.org/"> HTMX </a> and plain JS</li>
 <li> Deployment: <a href="https://www.shuttle.dev/"> Shuttle </a></li>
 </ul>
-<p></p>
 <p> Source code <a href="https://github.com/leshec/wordfind"> github </a></p>
 <p> Project inspiration the <a href="https://github.com/guardian/coding-exercises"> Guardian coding challenges </a></p>
 {% endblock %}
