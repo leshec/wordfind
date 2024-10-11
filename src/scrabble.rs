@@ -26,27 +26,23 @@ pub struct Answer {
 }
 
 pub fn sanitize(player_tiles: Vec<char>) -> (Vec<char>, bool) {
-    let mut flag_good = true;
-    if player_tiles.len() > 15 {
-        flag_good = false;
-    }
-    let mut clean_tiles: Vec<char> = Vec::new();
-    for tile in player_tiles {
-        if tile.is_alphabetic() {
-            clean_tiles.push(tile.to_ascii_lowercase());
-        }
-    }
+    let flag_good = player_tiles.len() <= 15;
+    let clean_tiles: Vec<char> = player_tiles
+        .into_iter()
+        .filter(|&tile| tile.is_alphabetic())
+        .map(|tile| tile.to_ascii_lowercase())
+        .collect();
     (clean_tiles, flag_good)
 }
 
-pub async fn anagram_run(player_tiles: Vec<char>) -> Answer {
+async fn run_tiles(player_tiles: Vec<char>, use_full_subsets: bool) -> Answer {
     let number_of_tiles: u8 = player_tiles.len() as u8;
 
     let (mut player_tiles, flag) = sanitize(player_tiles);
 
     if !flag {
         return Answer {
-            tiles: player_tiles.to_vec(),
+            tiles: player_tiles.clone(),
             longest_valid_words: vec!["Your input must be less than 15 words".to_string()],
             highest_scoring_words: vec!["invalid input".to_string()],
             valid_words: vec!["invalid input".to_string()],
@@ -58,13 +54,15 @@ pub async fn anagram_run(player_tiles: Vec<char>) -> Answer {
     let mut subsets = produce_tile_subsets(player_tiles.clone(), number_of_tiles);
     subsets.dedup();
 
-    let mut restricted_subsets: Vec<String> = Vec::new();
-
-    for sub in subsets.clone().iter() {
-        if sub.len() == player_tiles.clone().len() {
-            restricted_subsets.push(sub.to_string());
-        }
-    }
+    let restricted_subsets: Vec<String> = if use_full_subsets {
+        subsets
+            .iter()
+            .filter(|&sub| sub.len() == player_tiles.len())
+            .cloned()
+            .collect()
+    } else {
+        subsets
+    };
 
     let results_list_future = task::spawn(async move { make_results_list(restricted_subsets) });
 
@@ -74,49 +72,121 @@ pub async fn anagram_run(player_tiles: Vec<char>) -> Answer {
     let answer_future = task::spawn(async move { build(&mut results_list, player_tiles.clone()) });
     answer_future.await.unwrap()
 }
+
+pub async fn anagram_run(player_tiles: Vec<char>) -> Answer {
+    run_tiles(player_tiles, true).await
+}
+
 pub async fn cheat_run(player_tiles: Vec<char>) -> Answer {
-    let number_of_tiles: u8 = player_tiles.len() as u8;
-
-    let (mut player_tiles, flag) = sanitize(player_tiles);
-
-    if !flag {
-        return Answer {
-            tiles: player_tiles.to_vec(),
-            longest_valid_words: vec!["Your input must be less than 15 words".to_string()],
-            highest_scoring_words: vec!["invalid input".to_string()],
-            valid_words: vec!["invalid input".to_string()],
-        };
-    }
-
-    player_tiles.sort();
-
-    let mut subsets = produce_tile_subsets(player_tiles.clone(), number_of_tiles);
-    subsets.dedup();
-
-    let results_list_future = task::spawn(async move { make_results_list(subsets) });
-
-    let mut results_list = results_list_future.await.unwrap();
-    results_list.dedup();
-
-    let answer_future = task::spawn(async move { build(&mut results_list, player_tiles.clone()) });
-    answer_future.await.unwrap()
+    run_tiles(player_tiles, false).await
 }
 
 pub async fn demo_run() -> Answer {
     let number_of_tiles: u8 = 7;
     let player_tiles = make_a_set_of_random_tiles(number_of_tiles);
-    let mut subsets = produce_tile_subsets(player_tiles.clone(), number_of_tiles);
-    subsets.dedup();
-
-    let results_list_future = task::spawn(async move { make_results_list(subsets) });
-
-    let mut results_list = results_list_future.await.unwrap();
-
-    results_list.dedup();
-
-    let answer_future = task::spawn(async move { build(&mut results_list, player_tiles.clone()) });
-    answer_future.await.unwrap()
+    run_tiles(player_tiles, false).await
 }
+
+// #[derive(Debug)]
+// pub struct Answer {
+//     pub tiles: Vec<char>,
+//     pub longest_valid_words: Vec<String>,
+//     pub highest_scoring_words: Vec<String>,
+//     pub valid_words: Vec<String>,
+// }
+//
+// pub fn sanitize(player_tiles: Vec<char>) -> (Vec<char>, bool) {
+//     let mut flag_good = true;
+//     if player_tiles.len() > 15 {
+//         flag_good = false;
+//     }
+//     let mut clean_tiles: Vec<char> = Vec::new();
+//     for tile in player_tiles {
+//         if tile.is_alphabetic() {
+//             clean_tiles.push(tile.to_ascii_lowercase());
+//         }
+//     }
+//     (clean_tiles, flag_good)
+// }
+//
+// pub async fn anagram_run(player_tiles: Vec<char>) -> Answer {
+//     let number_of_tiles: u8 = player_tiles.len() as u8;
+//
+//     let (mut player_tiles, flag) = sanitize(player_tiles);
+//
+//     if !flag {
+//         return Answer {
+//             tiles: player_tiles.to_vec(),
+//             longest_valid_words: vec!["Your input must be less than 15 words".to_string()],
+//             highest_scoring_words: vec!["invalid input".to_string()],
+//             valid_words: vec!["invalid input".to_string()],
+//         };
+//     }
+//
+//     player_tiles.sort();
+//
+//     let mut subsets = produce_tile_subsets(player_tiles.clone(), number_of_tiles);
+//     subsets.dedup();
+//
+//     let mut restricted_subsets: Vec<String> = Vec::new();
+//
+//     for sub in subsets.clone().iter() {
+//         if sub.len() == player_tiles.clone().len() {
+//             restricted_subsets.push(sub.to_string());
+//         }
+//     }
+//
+//     let results_list_future = task::spawn(async move { make_results_list(restricted_subsets) });
+//
+//     let mut results_list = results_list_future.await.unwrap();
+//     results_list.dedup();
+//
+//     let answer_future = task::spawn(async move { build(&mut results_list, player_tiles.clone()) });
+//     answer_future.await.unwrap()
+// }
+// pub async fn cheat_run(player_tiles: Vec<char>) -> Answer {
+//     let number_of_tiles: u8 = player_tiles.len() as u8;
+//
+//     let (mut player_tiles, flag) = sanitize(player_tiles);
+//
+//     if !flag {
+//         return Answer {
+//             tiles: player_tiles.to_vec(),
+//             longest_valid_words: vec!["Your input must be less than 15 words".to_string()],
+//             highest_scoring_words: vec!["invalid input".to_string()],
+//             valid_words: vec!["invalid input".to_string()],
+//         };
+//     }
+//
+//     player_tiles.sort();
+//
+//     let mut subsets = produce_tile_subsets(player_tiles.clone(), number_of_tiles);
+//     subsets.dedup();
+//
+//     let results_list_future = task::spawn(async move { make_results_list(subsets) });
+//
+//     let mut results_list = results_list_future.await.unwrap();
+//     results_list.dedup();
+//
+//     let answer_future = task::spawn(async move { build(&mut results_list, player_tiles.clone()) });
+//     answer_future.await.unwrap()
+// }
+//
+// pub async fn demo_run() -> Answer {
+//     let number_of_tiles: u8 = 7;
+//     let player_tiles = make_a_set_of_random_tiles(number_of_tiles);
+//     let mut subsets = produce_tile_subsets(player_tiles.clone(), number_of_tiles);
+//     subsets.dedup();
+//
+//     let results_list_future = task::spawn(async move { make_results_list(subsets) });
+//
+//     let mut results_list = results_list_future.await.unwrap();
+//
+//     results_list.dedup();
+//
+//     let answer_future = task::spawn(async move { build(&mut results_list, player_tiles.clone()) });
+//     answer_future.await.unwrap()
+// }
 
 fn build(results_list: &mut [String], player_tiles: Vec<char>) -> Answer {
     if results_list.is_empty() {
