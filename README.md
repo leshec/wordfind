@@ -7,8 +7,8 @@ Web app: Crossword / scrabble word finder learning webproject
 - Play a game to find words from random letters/tiles
 - Find anagrams of words
 
-Shuttle is an awesome tool for quickly and easily deploying webapps based on Rust
-Tera for templating was good but I'll explore others
+Shuttle is an awesome tool for quickly and easily deploying webapps based on Rust,
+Tera for templating was good but I'll explore others but runtime template and error are hard to spot,
 Axum is easy enough to use and I like the idea of HTMX in general
 
 Not 100% finished but functions enough as intended
