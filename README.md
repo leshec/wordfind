@@ -15,7 +15,7 @@ Not 100% finished but functions enough as intended
 
 ## **Website** 
 
-- Wordfinder (https://wordfinder.shuttleapp.rs/wordfind)
+- Wordfinder (https://wordfinder.shuttleapp.rs)
 
 
 ## **Todo:**
