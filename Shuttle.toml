@@ -1,1 +1,13 @@
 name = "wordfinder"
+
+# Declare files that should be moved to the runtime container:
+[build]
+assets = [
+  "assets",
+  "js",
+  "image"
+]
+
+[deploy]
+deny_dirty = true
+
