@@ -1,8 +1,10 @@
 [build]
 assets = [
+  "index.html",
   "assets/*",
   "js/*",
-  "image/*"
+  "image/*",
+  "templates/*"
 ]
 
 [deploy]
