@@ -77,7 +77,7 @@ If you want to mess around with it...
 - Visit (https://www.shuttle.rs/) for more info, example and to deploy your own stuff loads of example
 
 Note: Shuttle is migrating from shuttle.rs to shuttle.dev, this site will be moved soon. The web url will change on update:
-- UPDATE: use 'shuttle run`, `shuttle deploy` and `shuttle deployment status'
+- UPDATE: use `shuttle run`, `shuttle deploy` and `shuttle deployment status`
   - new site with https://www.shuttle.dev/ shuttle.dev domain: (https://wordfinder-awq2.shuttle.app)
   - Need to reference static files under build attribute in Shuttle.toml, this overcame issues with build failing to find index.html and tera templates. See Shuttle.toml
 
