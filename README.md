@@ -16,6 +16,7 @@ Not 100% finished but functions enough as intended
 ## **Website** 
 
 - Wordfinder (https://wordfinder.shuttleapp.rs)
+- new site with shuttle.dev domain (https://wordfinder-awq2.shuttle.app)
 
 
 ## **Todo:**
