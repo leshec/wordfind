@@ -46,7 +46,7 @@ async fn main() {
         .nest_service("/js/htmx.min.js", ServeFile::new("js/htmx.min.js"));
 
     // run it
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:443").await.unwrap();
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:8080").await.unwrap();
     println!("listening on {}", listener.local_addr().unwrap());
     axum::serve(listener, app).await.unwrap();
 }
