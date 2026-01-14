@@ -1,5 +1,13 @@
 # wordfinder
 
+Trying out deployment via Railway and Leapcell.
+
+Railway: EU deployed 30-60ms for me (I'm europe)
+https://wordfind-production.up.railway.app/
+
+Leapcell: slower e.g. 150-200ms US west or Tokyo servers.
+https://wordfind-leshec290-i6w2gi13.leapcell.dev/
+
 Web app: Crossword / scrabble word finder learning webproject
 
 - Demo mode generates random tiles: then finds largest, highest score and valid words
