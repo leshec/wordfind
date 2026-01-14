@@ -1,12 +1,12 @@
-[build]
-assets = [
-  "index.html",
-  "assets/*",
-  "js/*",
-  "image/*",
-  "templates/*"
-]
-
-[deploy]
-deny_dirty = true
-
+# [build]
+# assets = [
+#   "index.html",
+#   "assets/*",
+#   "js/*",
+#   "image/*",
+#   "templates/*"
+# ]
+#
+# [deploy]
+# deny_dirty = true
+#

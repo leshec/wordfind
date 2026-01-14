@@ -97,7 +97,7 @@ fn build(results_list: &mut [String], player_tiles: Vec<char>) -> Answer {
         };
     };
 
-    results_list.sort_by_key(|a| (a.len()));
+    results_list.sort_by_key(|a| a.len());
     results_list.reverse();
 
     let mut longest_words: Vec<String> = Vec::new();
@@ -140,7 +140,7 @@ pub fn make_a_set_of_random_tiles(number_of_tiles: u8) -> Vec<char> {
     const ASCIISET: &[u8] =
         b"aaaaaaaaaiiiiiiiiioooooooonnnnnnrrrrrrttttttllllssssuuuuddddgggbbccmmppffhhvvwwyykjxqz";
     for _ in 1..(number_of_tiles + 1) {
-        let idx = rand::thread_rng().gen_range(0..ASCIISET.len());
+        let idx = rand::rng().random_range(0..ASCIISET.len());
         bag.push(ASCIISET[idx] as char)
     }
     bag.sort();
@@ -198,4 +198,3 @@ fn make_results_list(subsets: Vec<String>) -> Vec<String> {
     results_list.dedup();
     results_list
 }
-

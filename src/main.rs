@@ -1,9 +1,8 @@
 mod scrabble;
-
+use axum::Router;
 use axum::extract::Form;
 use axum::response::Html;
 use axum::routing::{get, post};
-use axum::Router;
 use lazy_static::lazy_static;
 use serde::Deserialize;
 use tera::Tera;
@@ -17,11 +16,11 @@ lazy_static! {
     };
 }
 
-#[shuttle_runtime::main]
-async fn main() -> shuttle_axum::ShuttleAxum {
+#[tokio::main]
+async fn main() {
     // build our application with a route
 
-    let router = Router::new()
+    let app = Router::new()
         .route("/", get(index))
         .route("/about", get(about))
         .route("/demo_page", get(demo_page))
@@ -46,7 +45,12 @@ async fn main() -> shuttle_axum::ShuttleAxum {
         .nest_service("/style.css", ServeFile::new("css/style.css"))
         .nest_service("/js/htmx.min.js", ServeFile::new("js/htmx.min.js"));
 
-    Ok(router.into())
+    // run it
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:8080")
+        .await
+        .unwrap();
+    println!("listening on {}", listener.local_addr().unwrap());
+    axum::serve(listener, app).await.unwrap();
 }
 
 //ABOUT_PAGE

@@ -7,23 +7,18 @@ Web app: Crossword / scrabble word finder learning webproject
 - Play a game to find words from random letters/tiles
 - Find anagrams of words
 
-Shuttle is an awesome tool for quickly and easily deploying webapps based on Rust,
-Tera for templating was good but I'll explore others but runtime template and error are hard to spot,
-Axum is easy enough to use and I like the idea of HTMX in general
-
 Not 100% finished but functions enough as intended
 
 ## **Website** 
 
 - Wordfinder (https://wordfinder.shuttleapp.rs)
-- new site with https://www.shuttle.dev/ shuttle.dev domain: (https://wordfinder-awq2.shuttle.app)
 
 
 ## **Todo:**
 
 - [x] Favicon. What is the right way to do this? 
 - [x] Experiment with loops in templates
-- [x] Figure how to deploy with shuttle
+- [x] Figure how to deploy with shuttle. Edit Shuttle closed down. 
 - [ ] Make some notes for later
 - [ ] error handling and testing etc
 - [x] add an about and contact for new words
@@ -33,7 +28,7 @@ Not 100% finished but functions enough as intended
 - [ ] add a pop over if you click on a word to show meaning of word, there is a nice dictionary API for that
 
 
-## **Project tools: HTMX, Tera, Axum, Missing and Shuttle**
+## **Project tools: HTMX, Tera, Axum, Missing and shuttle**
 
 - Web server: Rust with Axum (https://github.com/tokio-rs/axum) 
 - HTML templating engine: Tera (https://docs.rs/tera/latest/tera)
@@ -42,7 +37,7 @@ Not 100% finished but functions enough as intended
 - Tera (https://keats.github.io/tera/docs/#getting-started)
 - Hotreloading: Cargo-watch (https://github.com/watchexec/cargo-watch)
 - Hotreloading: Tower-livereload (https://github.com/leotaku/tower-livereload) - disabled
-- Deployed via shuttle.rs on free tier (https://www.shuttle.rs/)
+- ~~Deployed via shuttle.rs on free tier (https://www.shuttle.rs/). Edit: closed/deprecated.
 
 
 ## **HTMX Example app:**
@@ -67,17 +62,7 @@ If you want to mess around with it...
 
 - Terminal `git clone https://github.com/leshec/wordfind.git`
 - Need Rust installed, comes with Cargo package manager, from terminal `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
-- Install Shuttle or see their website e.g for linux/mac `curl -sSfL https://www.shuttle.rs/install | bash`
-- A Windows version of Shuttle available
-- Terminal `cargo build && cargo shuttle project run`
-- Site runs locally on your machine e.g. via `127.0.0.1:8000`
-- See docs on Shuttle.rs 
-- Deployment is pretty simple:
-- Log in to shuttle via terminal `cargo shuttle login` note sign up is easy with Github, dashboard is minimal, prompts for API, takes you to website to get it, and then paste into terminal and run from command line `cargo shuttle deploy`
-- Visit (https://www.shuttle.rs/) for more info, example and to deploy your own stuff loads of example
+- Terminal `cargo build` 
+- Site runs locally on your machine e.g. via `127.0.0.1:8080`
 
-Note: Shuttle is migrating from shuttle.rs to shuttle.dev, this site will be moved soon. The web url will change on update:
-- UPDATE: use `shuttle run`, `shuttle deploy` and `shuttle deployment status`
-  - new site with https://www.shuttle.dev/ shuttle.dev domain: (https://wordfinder-awq2.shuttle.app)
-  - Need to reference static files under build attribute in Shuttle.toml, this overcame issues with build failing to find index.html and tera templates. See Shuttle.toml
 
