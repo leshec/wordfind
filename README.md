@@ -1,11 +1,13 @@
 # wordfinder
 
-Trying out deployment via Railway and Leapcell.
+Trying out deployment via Railway and Leapcell. 
+
+Verdict: Railway better for me. 1) closer datacentre, quicker app. 2)nicer interface and not garish appearance. That said if I was in the US, leapcell was easy enough to set up and get going so I'd give it a go for a while. 
 
 Railway: EU deployed 30-60ms for me (I'm europe)
 https://wordfind-production.up.railway.app/
 
-Leapcell: slower e.g. 150-200ms US west or Tokyo servers.
+Leapcell: slower e.g. 150-200ms US East or Tokyo servers.
 https://wordfind-leshec290-i6w2gi13.leapcell.dev/
 
 Web app: Crossword / scrabble word finder learning webproject
